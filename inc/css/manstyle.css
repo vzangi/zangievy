@@ -1,0 +1,59 @@
+img {
+	max-width: 100%;
+}
+.father img,
+.partner img,
+.childs img,
+.mother img {
+	width: 150px;
+	float: left;
+	margin: 0 15px 15px 0;
+}
+.current-man {
+	padding:20px;
+	background: #f5f5f5;
+}
+.child:after,
+.partner:after {
+	content: ' ';
+	display: table;
+	clear: both;
+}
+h3 {
+	background: #f77b7b;
+	padding: 5px;
+	text-align: center;
+}
+h3.family-header {
+	background: #7bc9f7;
+}
+.father h4,
+.partner h4,
+.childs h5,
+.mother h4 {
+	position: relative;
+	padding-left: 10px;
+}
+.mother h4:before,
+.partner h4:before,
+.childs h5:before,
+.father h4:before {
+    content: ' ';
+    border: 2px solid #f77b7b;
+    position: absolute;
+    top: 3px;
+    bottom: 0;
+    left: 0;
+}
+.partner h4:before {
+	border: 2px solid #7bc9f7;
+}
+.childs h5:before {
+	border: 2px solid #83f77b;
+}
+.childs ul {
+	padding: 0;
+}
+.child {
+	list-style: none;
+}

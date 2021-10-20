@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^favicon\.ico$ /inc/zicons/favicon.ico [L]
+RewriteRule ^apple-touch-icon-57x57.png$ /inc/zicons/apple-icon-57x57.png [L]
+RewriteRule ^apple-touch-icon-precomposed.png$ /inc/zicons/apple-icon-precomposed.png [L]
+RewriteRule ^apple-touch-icon.png$ /inc/zicons/apple-icon.png [L]
+RewriteRule ^icon.png$ /inc/images/gerb-icon.png [L]
+RewriteRule ^dodti$ /man/32 [L]
+RewriteRule ^Зангиев.Додти$ /man/32 [L]
+
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+AddDefaultCharset WINDOWS-1251
+
+AddDefaultCharset UTF-8

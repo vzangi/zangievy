@@ -1,0 +1,38 @@
+body {
+	background-image: url(/inc/images/gerb2.jpg);
+    background-size: contain;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-color: #fcfcfc;
+}
+form {
+	padding: 10px;
+}
+input {
+	min-width: 260px;
+	border: 0;
+    border-bottom: 1px solid #aaa;
+	background-color: #fcfcfc;
+    outline: none;
+	padding: 5px 10px;
+}
+.helper {
+	padding: 0;
+}
+.helper .man{
+	padding: 10px;
+	list-style: none;
+	background: rgba(248,248,248,0.95);
+    border-bottom: 1px solid #eee;
+}
+.helper .man img {
+	width: 100px;
+	margin-right: 10px;
+	float: left;
+}
+.helper .man:before,
+.helper .man:after {
+	content: ' ';
+	display: table;
+	clear: both;
+}
