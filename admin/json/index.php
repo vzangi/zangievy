@@ -133,18 +133,18 @@
 		if ( isset($itemId) ) {
 			$query = "SELECT * FROM `$table` WHERE id = $itemId $where";
 			
-			$response = mysql_query($query, $db);
-			if (mysql_num_rows($response) != 0) {
-				$item = mysql_fetch_array($response, MYSQL_ASSOC);
+			$response = mysqli_query($db, $query);
+			if (mysqli_num_rows($response) != 0) {
+				$item = mysqli_fetch_array($response, MYSQLI_ASSOC);
 				$item = normalize($array_row, $hidden_row, $item);
 				exit( json_encode( $item ) );
 			} 
 		} else {
 			$query = "SELECT * FROM `$table` WHERE 1 = 1 $where";
-			$response = mysql_query($query, $db);
+			$response = mysqli_query($db, $query);
 			$items = array();
-			if (mysql_num_rows($response) != 0) {
-				while ( ($row = mysql_fetch_array($response, MYSQL_ASSOC)) !== false ) {
+			if (mysqli_num_rows($response) != 0) {
+				while ( ($row = mysqli_fetch_array($response, MYSQLI_ASSOC)) !== false ) {
 					$items[] = normalize($array_row, $hidden_row, $row);
 				}
 			}
@@ -181,9 +181,9 @@
 		}
 		
 		$query = "INSERT INTO `$table` ($keys) VALUES ($values)";
-		$res = mysql_query($query, $db);
+		$res = mysqli_query($db, $query);
 		if ($res) {
-			$cid = mysql_insert_id();
+			$cid = mysqli_insert_id();
 			exit ( json_encode(array("id" => $cid, "status" => 200)) );
 		} else {
 			exit ( json_encode(array("status" => 300, "message" => "Not inserted", "query" => $query)) );
@@ -261,10 +261,10 @@
 		
 		//exit ( json_encode( $sets ) );
 		
-		$res = mysql_query("UPDATE `$table` SET $sets WHERE id = $id", $db);
+		$res = mysqli_query($db, "UPDATE `$table` SET $sets WHERE id = $id");
 		
 		if ($res) {
-			$cid = mysql_insert_id();
+			$cid = mysqli_insert_id();
 			exit ( json_encode(array("status" => 200, "sets" => $t, "put" => $_PUT)) );
 		} else {
 			exit ( json_encode(array("status" => 300, "message" => "Not updated")) );
@@ -276,10 +276,10 @@
 			exit ( json_encode(array("status" => 300, "message" => "Id not found")) );
 		}
 		
-		$res = mysql_query("DELETE FROM `$table` WHERE id = $itemId", $db);
+		$res = mysqli_query($db, "DELETE FROM `$table` WHERE id = $itemId");
 		
 		if ($res) {
-			$cid = mysql_insert_id();
+			$cid = mysqli_insert_id();
 			exit ( json_encode(array("status" => 200)) );
 		} else {
 			exit ( json_encode(array("status" => 300, "message" => "Not deleted")) );
